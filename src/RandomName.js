@@ -1,4 +1,5 @@
 import React from 'react';
+import './RandomName.css';
 
 class RandomName extends React.Component {
     constructor(props) {
@@ -9,8 +10,6 @@ class RandomName extends React.Component {
         };
         this.inputRef = React.createRef();
     }
-    // WARNING: this syntax is experimental!
-    // Using an arrow here binds the method:
     handleClick = (event) => {
         if(this.inputRef.current.value == '') return;
       const {nameList} = this.state;
@@ -47,34 +46,35 @@ class RandomName extends React.Component {
         const{nameList, pickedList} = this.state;
       return (
           <div>
-              <div style={{display: 'flex', margin: 20}}>
-                  <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button onClick={this.pickedName}>
-                        Pick A Name
-                    </button>
-                    <span style={{minWidth: 150}}>Selected Names</span>
-
-                  </div>
-                    <ul>
+                
+                    <ul className='nameList'>
+                        <li>
+                            <div style={{display: 'flex', margin: 20}}>
+                                <span style={{minWidth: 200}}>Selected Names</span>
+                                <button onClick={this.pickedName} className='btnStyle'>
+                                    Pick A Name
+                                </button>
+                            </div>
+                        </li>
                         {pickedList.map((item, index) =>
                             <li>
                                 <span key={index} style={{margin: '0px 10px', minWidth: 200}}>{item}</span>
                             </li>
                         )}
 
-                    </ul>
-                    
-                </div>
-                <div style={{display: 'flex', margin: 20}}>
-                    <input type="text" ref={this.inputRef}></input>
-                    <button onClick={this.handleClick}>
-                        Add Name
-                    </button>
-                </div>
+                    </ul>           
                 
-                <ul>
+                <ul className='nameList'>
+                    <li>
+                        <div style={{display: 'flex'}}>
+                            <input type="text" ref={this.inputRef} className='inputStyle'></input>
+                            <button onClick={this.handleClick} className='btnStyle'>
+                                Add Name
+                            </button>
+                        </div>
+                    </li>
                     {nameList.map((item, index) => 
-                        <li key={index} style={{display: 'flex', borderBottom: '1px solid grey'}}>
+                        <li key={index}>
                             <span style={{margin: '0px 10px', minWidth: 200}}>{item}</span>
                             <button onClick={() => this.removeName(index)}> Remove </button>
                         </li>

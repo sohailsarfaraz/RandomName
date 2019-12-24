@@ -1,0 +1,20 @@
+.nameList {
+    list-style-type: none;
+}
+.nameList li {
+    display: flex;
+    border-bottom: 1px solid #eaeaea;
+    padding: 10px;
+    margin: 0;
+}
+.inputStyle {
+    padding: 9px;
+    border-radius: 4px;
+    border: 1px solid #dad9d9;
+    margin: 0 10px;
+    min-width: 200;
+}
+.btnStyle {
+    border-radius: 4px;
+    padding: 5px;
+}
